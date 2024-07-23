@@ -1,12 +1,20 @@
 import AuthBG from '@/assets/auth_bg.webp'
 import { Arrow } from '@/components/icons'
 import { ButtonVariants } from '@/components/ui/button'
+import { useSession } from '@/hooks/auth'
 import { cn } from '@/lib/utils'
 import { Routes } from '@/routes'
-import { Link, Outlet } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 
 export default function AuthLayout() {
-  // useAuth()
+  const { user } = useSession()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (user === null) {
+      navigate(Routes.logIn)
+    }
+  }, [user, navigate])
 
   return (
     <div

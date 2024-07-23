@@ -19,6 +19,7 @@ export const logIn = async ({ email, password }: LogIn) => {
         email: 'franco@gmail.com',
         fullName: 'Franco',
         role: $UserRole.USER,
+        sessionToken: 'asdasdasdasd',
       },
     }
   } catch (error) {
